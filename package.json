@@ -1,0 +1,36 @@
+{
+  "name": "papr",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^3.7.0",
+    "@types/node-fetch": "^2.6.3",
+    "bootstrap": "^5.2.3",
+    "dotenv": "^16.0.3",
+    "graphql": "^16.6.0",
+    "gray-matter": "^4.0.3",
+    "luxon": "^3.0.3",
+    "marked-mangle": "^1.0.0",
+    "next": "12.2.5",
+    "node-fetch": "^3.3.1",
+    "react": "18.2.0",
+    "react-bootstrap": "^2.5.0",
+    "react-dom": "18.2.0",
+    "react-responsive-masonry": "^2.1.6",
+    "react-slick": "^0.29.0",
+    "remark": "^14.0.2",
+    "remark-html": "^15.0.1",
+    "sharp": "^0.31.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.3",
+    "eslint": "8.23.0",
+    "eslint-config-next": "12.2.5"
+  }
+}

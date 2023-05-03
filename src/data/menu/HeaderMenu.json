@@ -22,34 +22,8 @@
         "path": "/data-analytics"
     },
     {
-        "label": "Pages",
-        "path": "#",
-        "submenu": [
-            {
-                "sublabel": "Author",
-                "subpath": "/author/amachea-jajah"
-            },
-            {
-                "sublabel": "404 Error",
-                "subpath": "/404"
-            },
-            {
-                "sublabel": "Coming Soon",
-                "subpath": "/coming-soon"
-            },
-            {
-                "sublabel": "About Us",
-                "subpath": "/about-us"
-            },
-            {
-                "sublabel": "Team",
-                "subpath": "/team"
-            },
-            {
-                "sublabel": "Contact Us",
-                "subpath": "/contact"
-            }
-        ]
+        "label": "About",
+        "path": "/about-us"
     }
    
 ]

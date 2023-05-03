@@ -5,8 +5,10 @@ if (!process.env.WORDPRESS_API_URL) {
   `)
 }
 
-
 /** @type {import('next').NextConfig} */
+
+const withOffline = require("next-offline")
+
 const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
@@ -24,14 +26,22 @@ const nextConfig = {
         "secure.gravatar.com",
     ],
   },
-  async rewrites(){
-    return [
-      {
-        source: '/:slug',
-        destination: '/category/:slug'
-      },
-    ];
-  },
+ 
+  
 };
 
-module.exports = nextConfig
+module.exports = withOffline(nextConfig, {
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/v1':'',
+  workboxOpts: {
+    runtimeCaching: [
+      {
+        urlPattern: /(https?:\/\/.*\.(?:png|jpg|jpeg|svg|gif|woff|woff2|ttf|eot))/,
+        handler: 'CacheFirst',
+      },
+    ],
+  },
+});
+
+
+
+

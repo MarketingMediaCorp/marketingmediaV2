@@ -1,12 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 //import {  } from "../../../utils";
+import { slugify } from "../../../utils";
 
-const PostLayoutThree = ({ data, postSizeLg, pClass, videoPost }) => {
+
+const PostLayoutEleven = ({ data, postSizeLg, pClass, videoPost }) => {
+	const datee = data.node.date.split('T')
+    const dateFormatted = datee[0].toString()
+    const d = new Date(dateFormatted)
+    const options = {day:'2-digit',month:'long',year:'numeric'}
+    const formattedDate = d.toLocaleDateString('en-US',options)
 	
   return (
 	<div className={`axil-img-container ${pClass ?? "m-b-xs-30"}`}>
-		<Link href={`/post/${data.node.slug}`}>
+		<Link href={`/${slugify(data.node.categories.edges[0].node.slug)}/${data.node.slug}`}>
 			<a className={`d-block ${videoPost === true ? "h-100" : ""}`}>
 				<Image
 					src={data.node.featuredImage.node.sourceUrl}
@@ -21,26 +28,27 @@ const PostLayoutThree = ({ data, postSizeLg, pClass, videoPost }) => {
 		<div className="media post-block position-absolute">
 		<div className={`media-body ${postSizeLg === true ? "media-body__big" : "" }`}>
 			<div className="post-cat-group m-b-xs-10">
-			<Link href={`/${(data.node.categories.edges[0].node.slug)}`}>
+			<Link href={`/${slugify(data.node.categories.edges[0].node.slug)}`}>
 				<a className={`post-cat cat-btn ${data.cate_bg ?? "bg-color-blue-one"}`}>{data.node.categories.edges[0].node.name}</a>
 			</Link>
 			</div>
 			<div className="axil-media-bottom">
 			<h3 className="axil-post-title hover-line hover-line">
-				<Link href={`/post/${data.node.slug}`}>
+				<Link href={`/${slugify(data.node.categories.edges[0].node.slug)}/${data.node.slug}`}>
 					<a>{data.node.title}</a>
 				</Link>
 			</h3>
 			<div className="post-metas">
 				<ul className="list-inline">
 				<li>
-					<span className="post-author">By {data.node.author.node.name}</span>
-					
+				<Link href={`/about-us`}>
+                    <a className="post-author">{data.node.author.node.name}</a>
+                </Link>
 				</li>
 				{postSizeLg === true ?
 				<>
 					<li>
-					<i className="dot">.</i>{data.node.date}
+					<i className="dot"> .</i>{formattedDate}
 					</li>
 					<li>
 						<i className="feather icon-activity" />
@@ -62,4 +70,4 @@ const PostLayoutThree = ({ data, postSizeLg, pClass, videoPost }) => {
   );
 };
 
-export default PostLayoutThree;
+export default PostLayoutEleven;

@@ -11,30 +11,6 @@ const slugify = function (text) {
 		.replace(/-+$/, '') // Trim - from end of text
 }
 
-const removeDuplicates = function (originalArray, prop) {
-	var newArray = [];
-	var lookupObject = {};
-
-	for (var i in originalArray) {
-		lookupObject[originalArray[i][prop]] = originalArray[i];
-	}
-
-	for (i in lookupObject) {
-		newArray.push(lookupObject[i]);
-	}
-	return newArray;
-}
-
-const SortingByDate = function (posts) {
-	return posts
-		.sort((post1, post2) => {
-
-			const beforeDate = DateTime.fromFormat(post1.date, "LLL dd yyyy");
-			const afterDate = DateTime.fromFormat(post2.date, "LLL dd yyyy");
-			return afterDate - beforeDate;
-
-		})
-}
 
 const dateFormate = function () {
 	var day = new Date().getDate();
@@ -47,4 +23,4 @@ const dateFormate = function () {
 }
 
 
-export { slugify, removeDuplicates, SortingByDate, dateFormate };
+export { slugify, dateFormate };

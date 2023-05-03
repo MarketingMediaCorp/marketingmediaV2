@@ -1,5 +1,4 @@
 import SectionTitle from "../elements/SectionTitle";
-import PostLayoutTwo from "./layout/PostLayoutTwo";
 
 const PostSectionThree = ({ postData }) => {
 

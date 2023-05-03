@@ -43,49 +43,95 @@ export async function getPreviewPost(id, idType = 'DATABASE_ID') {
   )
   return data.post
 }
-/*export async function getPreviewByCategory(categoryName: string) {
+export async function getPSinglePost(name: string , categoryName: string) {
   const data = await fetchAPI(
     `
-     query AllPosts($categoryName: String!) {
-      posts(where: {categoryName: $categoryName}) {
+    query GlobalPropTech($categoryName: String!, $name: String!) {
+      posts(where: {categoryName: $categoryName, name: $name}) {
         edges {
           node {
             title
+            excerpt
             slug
             date
+            content
             featuredImage {
               node {
                 sourceUrl
-                altText
-              }
-            }
-            author {
-              node {
-                name
-                avatar {
-                  url
-                }
               }
             }
             categories {
               edges {
                 node {
-                  id
                   name
+                  slug
+                }
+              }
+            }
+            author {
+              node {
+                name
+                firstName
+                lastName
+                avatar {
+                  url
                 }
               }
             }
           }
         }
       }
-    }
-    `,
+    }`,
     {
-      variables: { categoryName },
+      variables: { name,categoryName },
     }
-  );
-  return data?.post;
-}*/
+  )
+  return data?.posts
+}
+export async function getListCategory(categoryName: string) {
+  const data = await fetchAPI(
+    `
+    query CategoryTech($categoryName: String!) {
+      posts(where: {categoryName: $categoryName}) {
+        edges {
+          node {
+            title
+            excerpt
+            slug
+            date
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
+            categories {
+              edges {
+                node {
+                  name
+                  slug
+                }
+              }
+            }
+            author {
+              node {
+                name
+                firstName
+                lastName
+                avatar {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }`,
+    {
+      variables: {categoryName },
+    }
+  )
+  return data?.posts
+}
 
 export async function getPreviewCategorySlug() {
   const data = await fetchAPI(
@@ -247,6 +293,7 @@ export async function getAllPostsForHome(preview) {
               edges {
                 node {
                   name
+                  slug
                 }
               }
             }
@@ -301,6 +348,7 @@ export async function getRecentModification(preview) {
               edges {
                 node {
                   name
+                  slug
                 }
               }
             }
@@ -349,6 +397,7 @@ export async function getFeaturedPostsForHome(preview) {
               edges {
                 node {
                   name
+                  slug
                 }
               }
             }

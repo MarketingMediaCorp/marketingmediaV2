@@ -17,17 +17,17 @@ const OffcanvasMenu = ({ofcshow, ofcHandleClose}) => {
                         <div className="col-lg-6">
                         <ul className="main-navigation side-navigation list-inline flex-column">
                             <li>
-                                <Link href="/category/data-analytics">
+                                <Link href="/data-analytics">
                                     <a>Data Analytics</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/category/software-and-tools">
+                                <Link href="/software-and-tools">
                                     <a>Software and Tools</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/category/home-electronics">
+                                <Link href="/home-electronics">
                                     <a>Home Electronics</a>
                                 </Link>
                             </li>

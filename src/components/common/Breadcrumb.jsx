@@ -14,7 +14,7 @@ const Breadcrumb = ({bCat, aPage}) => {
             </li>
             {bCat ? 
             <li className="breadcrumb-item">
-                <Link href={`/category/${slugify(bCat)}`} >
+                <Link href={`/${slugify(bCat)}`} >
                     <a>{bCat}</a>
                 </Link>
             </li>: ""

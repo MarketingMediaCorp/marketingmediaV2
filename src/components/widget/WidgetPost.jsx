@@ -1,6 +1,5 @@
 import { Tab, Nav  } from "react-bootstrap";
-import PostVideoTwo from "../post/layout/PostVideoTwo";
-import PostLayoutTwo from "../post/layout/PostLayoutTwo";
+import PostLayoutTwelve from "../post/layout/PostLayoutTwelve";
 
 
 const WidgetPost = ({dataPost}) => {
@@ -17,8 +16,9 @@ const WidgetPost = ({dataPost}) => {
             <Tab.Content>
                 <Tab.Pane eventKey="recent" key={Math.random()}>
                 {dataPost.slice(0, 4).map((data) => (
-                    <PostLayoutTwo data={data} pClass="" key={data.slug} />
+                    <PostLayoutTwelve data={data} pClass="" key={data.slug} />
                 ))}
+                
                 </Tab.Pane>             
             </Tab.Content>
             

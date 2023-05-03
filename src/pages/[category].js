@@ -1,21 +1,16 @@
-import { getAllPosts } from "../../../lib/api";
-import FooterOne from "../../components/footer/FooterOne";
-import HeaderFive from "../../components/header/HeaderFive";
-import Breadcrumb from "../../components/common/Breadcrumb";
-import { slugify } from "../../utils";
-import HeadMeta from "../../components/elements/HeadMeta";
-import AdBanner from "../../components/common/AdBanner";
-import WidgetAd from "../../components/widget/WidgetAd";
-import WidgetSocialShare from "../../components/widget/WidgetSocialShare";
-import WidgetPost from "../../components/widget/WidgetPost";
-import PostLayoutTwo from "../../components/post/layout/PostLayoutTwo";
-import WidgetCategory from "../../components/widget/WidgetCategory";
-import { getPreviewCategorySlug,getSlugData } from "../../../lib/api2";
+import FooterTwo from "../components/footer/FooterTwo";
+import HeaderFive from "../components/header/HeaderFive";
+import Breadcrumb from "../components/common/Breadcrumb";
+import { slugify } from "../utils";
+import HeadMeta from "../components/elements/HeadMeta";
+import { getPreviewCategorySlug,getSlugData,getPSinglePost } from "../../lib/api2";
+import PostLayoutThirteen from "../components/post/layout/PostLayoutThirteen"
+import {getListCategory} from "../../lib/api2"
 
 
-const PostCategory = ({ postData, postParams }) => {
-    const cateContent = postData[0];
-    console.log(postParams)
+const PostCategory = ({ postData}) => {
+    const cateContent = postData.edges[0];
+    console.log(postData)
 
     return ( <>
         <HeadMeta metaTitle={cateContent.node.categories.edges[0].node.name}/>
@@ -40,8 +35,8 @@ const PostCategory = ({ postData, postParams }) => {
                     <div className="col-lg-8">
                         {/*<AdBanner />*/}
                         <div className="axil-content">
-                            {postData.map((data) => (
-                                <PostLayoutTwo data={data} postSizeMd={true} key={data.slug}/>
+                            {postData.edges.map((data) => (
+                                <PostLayoutThirteen data={data} postSizeMd={true} key={data.slug}/>
                             ))}
                         </div>
                     </div>
@@ -55,7 +50,7 @@ const PostCategory = ({ postData, postParams }) => {
                 </div>
             </div>
         </div>
-        <FooterOne />
+        <FooterTwo />
     </>)
 }
 
@@ -64,19 +59,17 @@ export default PostCategory;
 
 export async function getStaticProps({ params }) {
 
-    const postParams = params.slug;
+    const postParams = params.category;
 
     const allPosts = await getPreviewCategorySlug()
     
-
-    const getCategoryData = allPosts.edges.filter(post => slugify(post.node.categories.edges[0].node.slug) === postParams);
-    const postData = getCategoryData;
-    console.log(postData)
+    
+ 
+    const postData = await getListCategory(postParams);
 
     return {
         props: {
             postData,
-            postParams
         }
     }
 }
@@ -86,10 +79,9 @@ export async function getStaticPaths() {
    
     const paths = postWithSlug.edges.map(post => ({
         params: {
-            slug: slugify(post.node.categories.edges[0].node.slug)
+            category: slugify(post.node.categories.edges[0].node.slug)
         }
     }))
-    console.log(paths)
 
     return {
         paths,

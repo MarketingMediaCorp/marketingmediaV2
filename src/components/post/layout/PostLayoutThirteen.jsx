@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { slugify } from "../../../utils";
 
-const PostLayoutTwo = ({data, postSizeMd, postBgDark}) => {
+const PostLayoutThirteen = ({data, postSizeMd, postBgDark}) => {
 
   return (
       	<div className={`media post-block m-b-xs-30 ${postSizeMd === true ? "post-block__mid" : ""} ${postBgDark === true ? "post-block__on-dark-bg": "" }`}>
@@ -31,7 +31,7 @@ const PostLayoutTwo = ({data, postSizeMd, postBgDark}) => {
                 </Link>
             </h3>
 		   {postSizeMd === true ? 
-			<p className="mid">{data.node.excerpt}</p>
+			<div className="mid" dangerouslySetInnerHTML={{__html: data.node.excerpt }} />
 
 			: ""
 			}
@@ -47,4 +47,4 @@ const PostLayoutTwo = ({data, postSizeMd, postBgDark}) => {
   );
 };
 
-export default PostLayoutTwo;
+export default PostLayoutThirteen;

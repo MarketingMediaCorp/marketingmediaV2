@@ -1,10 +1,10 @@
 import { SortingByDate } from "../../utils";
 import SectionTitle from "../elements/SectionTitle";
 import PostLayoutOne from "./layout/PostLayoutOne";
-import PostLayoutTwo from "./layout/PostLayoutTwo";
+import PostLayoutTen from "./layout/PostLayoutTen"
 
-const PostSectionOne = ({postData,EditorChoice,GlobalPropTech}) => {
-    SortingByDate(postData);
+const PostSectionOne = ({EditorChoice,GlobalPropTech}) => {
+
     return (
       <div className="recent-news-wrapper section-gap p-t-xs-15 p-t-sm-60">
         <div className="container">
@@ -12,6 +12,7 @@ const PostSectionOne = ({postData,EditorChoice,GlobalPropTech}) => {
             <div className="col-lg-6">
              
               <PostLayoutOne data={EditorChoice.edges[0]?.node} />
+        
              
             </div>
             <div className="col-lg-6">
@@ -23,9 +24,9 @@ const PostSectionOne = ({postData,EditorChoice,GlobalPropTech}) => {
                   slugText='global-proptech-news'
                 />
                 <div className="axil-content">
-                	{GlobalPropTech.map((data) => {
+                	{GlobalPropTech.map((gpt) => {
                     return(
-                        <PostLayoutTwo data={data} postBgDark={true} key={data.slug}/>
+                        <PostLayoutTen data={gpt} postBgDark={true} key={gpt.slug}/>
                     )
                   })}
                 </div>

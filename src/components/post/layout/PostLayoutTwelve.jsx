@@ -2,12 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { slugify } from "../../../utils";
 
-const PostLayoutTwo = ({data, postSizeMd, postBgDark}) => {
+const PostLayoutTwelve = ({data, postSizeMd, postBgDark}) => {
 
   return (
       	<div className={`media post-block m-b-xs-30 ${postSizeMd === true ? "post-block__mid" : ""} ${postBgDark === true ? "post-block__on-dark-bg": "" }`}>
          
-            <Link href={`/${slugify(data.node.categories.edges[0].node.name)}/${slugify(data.node.slug)}`}>
+            <Link href={`/${slugify(data.node.categories.edges[0].node.slug)}/${slugify(data.node.slug)}`}>
                 <a className="align-self-center">
                 <Image
                 src={data.node.featuredImage.node.sourceUrl}
@@ -47,4 +47,4 @@ const PostLayoutTwo = ({data, postSizeMd, postBgDark}) => {
   );
 };
 
-export default PostLayoutTwo;
+export default PostLayoutTwelve;

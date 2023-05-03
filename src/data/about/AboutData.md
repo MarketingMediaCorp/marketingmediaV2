@@ -1,25 +1,16 @@
 ---
-featuredImg: '/images/about-us.jpg'
+featuredImg: '/images/about.png'
 ---
 
-## The Professional Publishing Platform
+## Publishing Platform
 
-Aenean consectetur massa quis sem volutpat, a condimentum tortor pretium. Cras id ligula consequat, sagittis nulla at, sollicitudin lorem. Orci varius natoque penatibus et magnis dis parturient montes.
+Welcome to Marketing Media - your premier source for comprehensive coverage of the latest technological advancements in the real estate industry. Our mission is to help real estate professionals and tech enthusiasts stay up-to-date on the latest trends and tools in proptech. 
 
-Cras id ligula consequat, sagittis nulla at, sollicitudin lorem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus eleifend, dolor vel condimentum imperdiet. 
+Our team of expert writers and industry professionals provide in-depth analysis and discussion of different proptech software and their implementation in real estate. We believe that understanding the technical aspects of these tools is crucial to maximizing their potential and creating a competitive edge in the market. 
 
-In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its
-elements.
+Our content covers a range of topics, including case studies showcasing how technology has transformed the real estate industry, in-depth analysis of AI and machine learning algorithms used in real estate, discussion of emerging technologies such as blockchain and their potential impact on the real estate industry, and reviews and comparisons of different real estate software and tools.
 
-#### Our Growing News Network
-
-Cicero famously orated against his political opponent Lucius Sergius Catilina. Occasionally the first Oration against Catiline is taken for type specimens: Quo usque tandem abutere, Catilina, patientia nostra? Quam diu etiam furor iste tuus nos eludet? (How long, O Catiline, will you abuse our patience? And for how long will that madness of yours mock us?)
-
-Most text editors like MS Word or Lotus Notes generate random lorem text when needed, either as pre-installed module or plug-in to be added. Word selection or sequence don't necessarily match the original, which is intended to add variety.
-
-#### The Professional Publishing Platform
-
-Cicero famously orated against his political opponent Lucius Sergius Catilina. Occasionally the first Oration against Catiline is taken for type specimens: Quo usque tandem abutere, Catilina, patientia nostra? Quam diu etiam furor iste tuus nos eludet? (How long, O Catiline, will you abuse our patience? And for how long will that madness of yours mock us?)
-
-Most text editors like MS Word or Lotus Notes generate random lorem text when needed, either as pre-installed module or plug-in to be added. Word selection or sequence don't necessarily match the original, which is intended to add variety.
+ We take pride in delivering accurate, informative, and thought-provoking content that helps our readers make informed decisions about the latest developments in the field of proptech. Whether you're a real estate professional looking to optimize your workflow, or a tech enthusiast interested in the latest trends in the industry, Marketing Media is your perfect platform. 
+ 
+ Thank you for visiting us at Marketing Media, and we look forward to providing you with the latest insights and analysis in proptech.
 

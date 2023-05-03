@@ -11,7 +11,7 @@ import PostSectionThree from "../components/post/PostSectionThree";
 import PostSectionTwo from "../components/post/PostSectionTwo";
 import { CMS_NAME } from '../../lib/constants';
 
-import { getPreviewPost, getAllPostsForHome , getFeaturedPostsForHome , getEditorChoice, getGlobalNews,getRecentModification} from '../../lib/api2'
+import { getPreviewPost, getAllPostsForHome , getFeaturedPostsForHome , getEditorChoice, getGlobalNews,getRecentModification,getPSinglePost} from '../../lib/api2'
 
 
 const HomeOne = ({allPosts,EditorChoice,featuredPosts,GlobalProp, HomePost, Recent}) => {
@@ -23,7 +23,7 @@ const HomeOne = ({allPosts,EditorChoice,featuredPosts,GlobalProp, HomePost, Rece
     <>
     <HeadMeta metaTitle="Marketing Media"/>
     <HeaderFive />
-    <PostSectionOne postData={allPosts} EditorChoice={EditorChoice} GlobalPropTech={GlobalPropTech} />
+    <PostSectionOne EditorChoice={EditorChoice} GlobalPropTech={GlobalPropTech} />
     <PostSectionTwo postData={allPosts} featured={Featured}/>
     <PostSectionFive postData={allPosts} adBanner={false} pClass={null} MoreStories={MoreStories} Recent={RecentStories}/>
     <FooterTwo />
@@ -41,6 +41,9 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const EditorChoice = await getEditorChoice(preview)
   const GlobalProp = await getGlobalNews(preview)
   const Recent = await getRecentModification(preview)
+
+
+  
   
   const allPosts = getAllPosts([
     'postFormat',

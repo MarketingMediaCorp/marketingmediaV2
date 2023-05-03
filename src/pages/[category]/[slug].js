@@ -1,23 +1,23 @@
-import { getAllPosts, getPostBySlug } from "../../../lib/api";
-import markdownToHtml from "../../../lib/markdownToHtml";
 import Breadcrumb from "../../components/common/Breadcrumb";
 import HeadMeta from "../../components/elements/HeadMeta";
 import FooterTwo from "../../components/footer/FooterTwo";
 import HeaderFive from "../../components/header/HeaderFive";
-
 import PostFormatStandard from "../../components/post/post-format/PostFormatStandard";
-import {getAllPostsWithSlug} from "../../../lib/api2"
+import {getAllPostsWithSlug,getAllPostsForHome,getPSinglePost} from "../../../lib/api2";
 
 
 const PostDetails = ({postContent}) => {
 
-	const postData = postContent.getData[0]
+	const postData = postContent.single
+	const data = postData.edges[0]
+	console.log(data)
+
     return ( 
         <>
-		<HeadMeta metaTitle={postData.node.title}/>
+		<HeadMeta metaTitle={data.node.title}/>
         <HeaderFive />
-        <Breadcrumb bCat={postData.node.categories.edges[0].node.name} aPage={postData.node.title}/>
-		<PostFormatStandard  postData={postData} />
+        <Breadcrumb bCat={data.node.categories.edges[0].node.slug} aPage={data.node.title}/>
+		<PostFormatStandard  postData={data} />
         <FooterTwo />
         </>
      );
@@ -26,22 +26,18 @@ const PostDetails = ({postContent}) => {
 export default PostDetails;
 
 export async function getStaticProps({ params }) {
-   
 
-	const allPostsWithSlug = await getAllPostsWithSlug()
-	const allData = allPostsWithSlug.edges
-	
-	
-	const getData = allData.filter(post =>
-		post.node.slug === params.slug
-	)
+	const {category,slug} = params;
+	const allPostsWithSlug = await getAllPostsForHome()
 
+	const single = await getPSinglePost(slug,category)
+	
 
 
     return {
         props: {
             postContent : {
-                getData
+                single
             }
            
         }
@@ -54,12 +50,13 @@ export async function getStaticPaths() {
 	
 	const paths = allData.map(post => ({
         params: {
+			category: post.node.categories.edges[0].node.slug,
             slug: post.node.slug
+			
 			
 		}
 	}))
-
-
+	
 	return {
 		paths,
 		fallback: false,

@@ -1,4 +1,3 @@
-import { DateTime } from 'luxon'
 
 const slugify = function (text) {
 	return text

@@ -7,7 +7,7 @@ const OffcanvasMenu = ({ofcshow, ofcHandleClose}) => {
         <Offcanvas show={ofcshow} onHide={ofcHandleClose} placement="end" className="offcanvas-menu">
             <Offcanvas.Header closeButton className="close-offcanvasmeu"></Offcanvas.Header>
             <div className="side-nav">                
-                <span className="display-1 fs-1 light mb-5" id="brand-name" style={{color : "#000000"}}>Find what you're looking for</span>
+                <span className="display-1 fs-1 light mb-5" id="brand-name" style={{color : "#000000"}}>Find what you &apos; re looking for</span>
 
                 <div className="side-nav-inner nicescroll-container">
                    

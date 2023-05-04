@@ -22,25 +22,19 @@ const PostFormatStandard = ({postData}) => {
                      
                       <Image src={postContent} 
                       alt={postData.node.featuredImage.node.altText}
-									    width={730}
-									    height={550} className="m-b-lg-40"/>
+                      width={730}
+                      height={550} className="m-b-lg-40"/>
                       <div dangerouslySetInnerHTML={{__html: postData.node.content }}></div>
                     
                     </div>
                   </article>
-				  {/*<SocialShareBottom />*/}
-				  <hr className="m-t-xs-50 m-b-xs-60" />
-				  {/*<PostAuthor authorData={postData}/>
-				  <PostComment />*/}
+                  <hr className="m-t-xs-50 m-b-xs-60" />
+			
                 </main>
               </div>
               <div className="col-lg-4">
                 <div className="post-sidebar">
-                  {/*<WidgetAd />
-                  <WidgetNewsletter />
-                  <WidgetSocialShare />
-                  <WidgetPost dataPost={allData} />
-    <WidgetInstagram />*/}
+               
                 </div>
               </div>
             </div>

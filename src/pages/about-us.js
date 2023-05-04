@@ -1,19 +1,14 @@
 import Image from "next/image";
-import { getFileContentBySlug, getAllPosts } from "../../lib/api";
+import { getFileContentBySlug} from "../../lib/api";
 import markdownToHtml from "../../lib/markdownToHtml";
 import Breadcrumb from "../components/common/Breadcrumb";
 import BreadcrumbBanner from "../components/common/BreadcrumbBanner";
 import HeadMeta from "../components/elements/HeadMeta";
-import SectionTitleTwo from "../components/elements/SectionTitleTwo";
 import FooterTwo from "../components/footer/FooterTwo";
 import HeaderFive from "../components/header/HeaderFive";
-import TeamOne from "../components/team/TeamOne";
-import WidgetNewsletter from "../components/widget/WidgetNewsletter";
-import WidgetPost from "../components/widget/WidgetPost";
-import WidgetSocialShare from "../components/widget/WidgetSocialShare";
-import { removeDuplicates } from "../utils";
 
-const AboutUs = ({ aboutData, allPosts }) => {
+
+const AboutUs = ({ aboutData }) => {
 
 
     return (
@@ -42,7 +37,6 @@ const AboutUs = ({ aboutData, allPosts }) => {
                         {/* End of .col-lg-8 */}
                         <div className="col-lg-4">
                             <aside className="post-sidebar">
-                                {/*<WidgetNewsletter />*/}
                             </aside>
                         </div>
                     </div>

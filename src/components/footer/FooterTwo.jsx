@@ -10,7 +10,7 @@ const FooterTwo = () => {
           <div className="row align-items-center">
             <div className="col-md">
               <div className="footer-logo-container">
-			  	<Link href="/">
+                <Link href="/">
                     <a> 
                         <Image 
                          src="/favicon/logo7.svg"

@@ -5,7 +5,7 @@ import { slugify } from "../../../utils";
 const PostLayoutTwo = ({data, postSizeMd, postBgDark}) => {
 
   return (
-      	<div className={`media post-block m-b-xs-30 ${postSizeMd === true ? "post-block__mid" : ""} ${postBgDark === true ? "post-block__on-dark-bg": "" }`}>
+    <div className={`media post-block m-b-xs-30 ${postSizeMd === true ? "post-block__mid" : ""} ${postBgDark === true ? "post-block__on-dark-bg": "" }`}>
          
             <Link href={`/${slugify(data.node.categories.edges[0].node.name)}/${slugify(data.node.slug)}`}>
                 <a className="align-self-center">
@@ -30,7 +30,7 @@ const PostLayoutTwo = ({data, postSizeMd, postBgDark}) => {
                     <a>{data.node.title}</a>
                 </Link>
             </h3>
-		   {postSizeMd === true ? 
+      {postSizeMd === true ? 
 			<p className="mid">{data.node.excerpt}</p>
 
 			: ""

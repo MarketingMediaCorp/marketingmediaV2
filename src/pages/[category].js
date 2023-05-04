@@ -3,14 +3,13 @@ import HeaderFive from "../components/header/HeaderFive";
 import Breadcrumb from "../components/common/Breadcrumb";
 import { slugify } from "../utils";
 import HeadMeta from "../components/elements/HeadMeta";
-import { getPreviewCategorySlug,getSlugData,getPSinglePost } from "../../lib/api2";
+import { getSlugData } from "../../lib/api2";
 import PostLayoutThirteen from "../components/post/layout/PostLayoutThirteen"
 import {getListCategory} from "../../lib/api2"
 
 
 const PostCategory = ({ postData}) => {
     const cateContent = postData.edges[0];
-    console.log(postData)
 
     return ( <>
         <HeadMeta metaTitle={cateContent.node.categories.edges[0].node.name}/>
@@ -33,7 +32,7 @@ const PostCategory = ({ postData}) => {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-8">
-                        {/*<AdBanner />*/}
+                       
                         <div className="axil-content">
                             {postData.edges.map((data) => (
                                 <PostLayoutThirteen data={data} postSizeMd={true} key={data.slug}/>
@@ -42,9 +41,7 @@ const PostCategory = ({ postData}) => {
                     </div>
                     <div className="col-lg-4">
                         <div className="post-sidebar">
-                            {/*<WidgetAd />
-                           
-                            <WidgetAd img="/images/clientbanner/clientbanner3.jpg" height={492} width={320}/>*/}
+                            
                         </div>
                     </div>
                 </div>
@@ -61,7 +58,6 @@ export async function getStaticProps({ params }) {
 
     const postParams = params.category;
 
-    const allPosts = await getPreviewCategorySlug()
     
     
  

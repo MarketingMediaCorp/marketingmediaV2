@@ -3,14 +3,13 @@ import HeadMeta from "../../components/elements/HeadMeta";
 import FooterTwo from "../../components/footer/FooterTwo";
 import HeaderFive from "../../components/header/HeaderFive";
 import PostFormatStandard from "../../components/post/post-format/PostFormatStandard";
-import {getAllPostsWithSlug,getAllPostsForHome,getPSinglePost} from "../../../lib/api2";
+import {getAllPostsWithSlug,getPSinglePost} from "../../../lib/api2";
 
 
 const PostDetails = ({postContent}) => {
 
 	const postData = postContent.single
 	const data = postData.edges[0]
-	console.log(data)
 
     return ( 
         <>
@@ -28,7 +27,6 @@ export default PostDetails;
 export async function getStaticProps({ params }) {
 
 	const {category,slug} = params;
-	const allPostsWithSlug = await getAllPostsForHome()
 
 	const single = await getPSinglePost(slug,category)
 	

@@ -1,4 +1,3 @@
-import marked from 'marked-mangle';
 import { getFileContentBySlug } from '../../lib/api';
 import markdownToHtml from '../../lib/markdownToHtml';
 import HeadMeta from '../components/elements/HeadMeta';

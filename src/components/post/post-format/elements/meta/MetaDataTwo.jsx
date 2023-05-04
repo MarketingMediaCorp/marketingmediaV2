@@ -22,7 +22,7 @@ const MetaDataTwo = ({ metaData }) => {
         </div>
         <div className="post-navigation">
           <div className="post-nav-content">
-		  	<Link href="#">
+       <Link href="#">
 				<a className="next-post">
 				Next Post
 				<i className="feather icon-chevron-right" />
@@ -43,7 +43,7 @@ const MetaDataTwo = ({ metaData }) => {
           <div className="col-lg-8">
             <div className="post-title-wrapper">
               <div className="btn-group">
-			  		<Link href={`/category/${slugify(metaData.cate)}`}>
+           <Link href={`/category/${slugify(metaData.cate)}`}>
                         <a className={`cat-btn ${metaData.cate_bg ?? "bg-color-blue-one"}`}>{metaData.cate}</a>
                     </Link>
               </div>
@@ -53,7 +53,7 @@ const MetaDataTwo = ({ metaData }) => {
               <div className="post-metas banner-post-metas m-t-xs-20">
                 <ul className="list-inline">
                   <li>
-				  	<Link href={`/author/${slugify(metaData.author_name)}`}>
+           <Link href={`/author/${slugify(metaData.author_name)}`}>
 						<a className="post-author post-author-with-img">
 							<Image 
 								src={metaData.author_img}
@@ -65,7 +65,7 @@ const MetaDataTwo = ({ metaData }) => {
 						</a>
 					</Link>
                   </li>
-				  <li>
+          <li>
                         <i className="feather icon-activity" />
                         {metaData.post_views}
                     </li>

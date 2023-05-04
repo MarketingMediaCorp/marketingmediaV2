@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import MenuData from "../../data/menu/HeaderMenu.json";
 import OffcanvasMenu from './OffcanvasMenu';
-import SectionTitle from '../elements/SectionTitle';
 
 const HeaderFive = () => {
     // Main Menu Toggle 
@@ -52,13 +51,6 @@ const HeaderFive = () => {
 	const handleShow = () => setShow(true);
 
     // Header Search 
-	const [searchshow, setSearchShow] = useState(false);
-	const headerSearchShow = () => {
-			setSearchShow(true);
-	}
-	const headerSearchClose = () => {
-			setSearchShow(false);
-	}
 
 	// Mobile Menu Toggle 
 	const [mobileToggle, setMobileToggle] = useState(false);
@@ -103,7 +95,7 @@ const HeaderFive = () => {
 									width={158}
 									height={70}
 									className="col-xs-6"
-									/><span class="fs-3 light display-3" id="brand-name">Marketing Media</span>        
+									/><span className="fs-3 light display-3" id="brand-name">Marketing Media</span>        
 
 								</a>
 							</Link>

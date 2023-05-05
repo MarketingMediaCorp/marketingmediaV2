@@ -2914,6 +2914,9 @@ a {
   color: inherit;
   text-decoration: none;
 }
+.anchorlinks{
+  color:#007AFF
+}
 h1 a,
 h2 a,
 h3 a,

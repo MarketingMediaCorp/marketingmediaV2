@@ -14,6 +14,8 @@ const HomeOne = ({EditorChoice,featuredPosts,GlobalProp, HomePost, Recent}) => {
  const GlobalPropTech = GlobalProp.edges
  const MoreStories = HomePost.edges
  const RecentStories = Recent.edges
+
+
   return ( 
     <>
     <HeadMeta metaTitle="Marketing Media"/>
@@ -36,6 +38,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const EditorChoice = await getEditorChoice(preview)
   const GlobalProp = await getGlobalNews(preview)
   const Recent = await getRecentModification(preview)
+
 
   return {
     props: { HomePost, preview,featuredPosts,EditorChoice, GlobalProp,Recent },

@@ -181,6 +181,7 @@ export async function getSlugData() {
       posts {
         edges {
           node {
+         
             categories {
               edges {
                 node {
@@ -190,6 +191,7 @@ export async function getSlugData() {
                 }
               }
             }
+            modified
           }
         }
       }
@@ -200,53 +202,7 @@ export async function getSlugData() {
 }
 
 
-export async function getAllPostsWithSlug() {
-  const data = await fetchAPI(`
-    {
-      posts {
-        edges {
-          node {
-            slug
-            id
-            title
-            content
-            slug
-            date
-            featuredImage {
-              node {
-                sourceUrl
-                altText
-              }
-            }
-            author {
-              node {
-                name
-                
-                avatar {
-                  url
-                }
-              }
-            }
-            categories {
-              edges {
-                node {
-                  name
-                  slug
-                }
-              }
-            }
-            tags {
-              nodes {
-                name
-              }
-            }
-          }
-        }
-      }
-    }
-  `)
-  return data?.posts
-}
+
 export async function getCategory() {
   const data = await fetchAPI(`
   query category {
@@ -255,19 +211,20 @@ export async function getCategory() {
         node {
           id
           name
+          slug
         }
       }
     }
   }
   `)
-  return data?.posts
+  return data?.categories
 }
 
 export async function getAllPostsForHome(preview) {
   const data = await fetchAPI(
     `
     query AllPosts {
-      posts(first: 20, where: {orderby: {field: DATE, order: ASC}}) {
+      posts(where: {orderby: {field: DATE, order: ASC}}) {
         edges {
           node {
             title
@@ -456,16 +413,9 @@ export async function getGlobalNews(preview) {
             author {
               node {
                 name
-                firstName
-                lastName
                 avatar {
                   url
                 }
-              }
-            }
-            tags {
-              nodes {
-                name
               }
             }
           }
@@ -483,7 +433,7 @@ export async function getGlobalNews(preview) {
 
   return data?.posts
 }
-
+//Optimized For Production
 export async function getEditorChoice(preview) {
   const data = await fetchAPI(
     `
@@ -495,7 +445,6 @@ export async function getEditorChoice(preview) {
         edges {
           node {
             title
-            excerpt
             slug
             date
             featuredImage {
@@ -515,8 +464,6 @@ export async function getEditorChoice(preview) {
             author {
               node {
                 name
-                firstName
-                lastName
                 avatar {
                   url
                 }
@@ -538,113 +485,31 @@ export async function getEditorChoice(preview) {
   return data?.posts
 }
 
-export async function getPostAndMorePosts(slug, preview, previewData) {
-  const postPreview = preview && previewData?.post
-  // The slug may be the id of an unpublished post
-  const isId = Number.isInteger(Number(slug))
-  const isSamePost = isId
-    ? Number(slug) === postPreview.id
-    : slug === postPreview.slug
-  const isDraft = isSamePost && postPreview?.status === 'draft'
-  const isRevision = isSamePost && postPreview?.status === 'publish'
-  const data = await fetchAPI(
-    `
-    fragment AuthorFields on User {
-      name
-      firstName
-      lastName
-      avatar {
-        url
-      }
-    }
-    fragment PostFields on Post {
-      title
-      excerpt
-      slug
-      date
-      featuredImage {
+
+
+//Optimized For Prodution
+export async function getUrl() {
+  const data = await fetchAPI(`
+  {
+    posts(first: 100) {
+      edges {
         node {
-          sourceUrl
-        }
-      }
-      author {
-        node {
-          ...AuthorFields
-        }
-      }
-      categories {
-        edges {
-          node {
-            name
-          }
-        }
-      }
-      tags {
-        edges {
-          node {
-            name
-          }
-        }
-      }
-    }
-    query PostBySlug($id: ID!, $idType: PostIdType!) {
-      post(id: $id, idType: $idType) {
-        ...PostFields
-        content
-        ${
-          // Only some of the fields of a revision are considered as there are some inconsistencies
-          isRevision
-            ? `
-        revisions(first: 1, where: { orderby: { field: MODIFIED, order: DESC } }) {
-          edges {
-            node {
-              title
-              excerpt
-              content
-              author {
-                node {
-                  ...AuthorFields
-                }
+          slug
+          id
+          title
+          slug
+          categories {
+            edges {
+              node {
+                name
+                slug
               }
             }
           }
         }
-        `
-            : ''
-        }
-      }
-      posts(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
-        edges {
-          node {
-            ...PostFields
-          }
-        }
       }
     }
-  `,
-    {
-      variables: {
-        id: isDraft ? postPreview.id : slug,
-        idType: isDraft ? 'DATABASE_ID' : 'SLUG',
-      },
-    }
-  )
-
-  // Draft posts may not have an slug
-  if (isDraft) data.post.slug = postPreview.id
-  // Apply a revision (changes in a published post)
-  if (isRevision && data.post.revisions) {
-    const revision = data.post.revisions.edges[0]?.node
-
-    if (revision) Object.assign(data.post, revision)
-    delete data.post.revisions
   }
-
-  // Filter out the main post
-  data.posts.edges = data.posts.edges.filter(({ node }) => node.slug !== slug)
-  // If there are still 3 posts, remove the last one
-  if (data.posts.edges.length > 2) data.posts.edges.pop()
-
-  return data
+  `)
+  return data?.posts
 }
-

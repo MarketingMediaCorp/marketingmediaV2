@@ -10,7 +10,7 @@ if (!process.env.WORDPRESS_API_URL) {
 const withOffline = require("next-offline")
 
 const nextConfig = {
-  reactStrictMode: false,
+  reactStrictMode: true,
   swcMinify: true,
   basePath: process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_BASEPATH : "",
   webpack: (config) => {
@@ -26,6 +26,7 @@ const nextConfig = {
         "secure.gravatar.com",
     ],
   },
+  
  
   
 };

@@ -3,7 +3,7 @@ import HeadMeta from "../../components/elements/HeadMeta";
 import FooterTwo from "../../components/footer/FooterTwo";
 import HeaderFive from "../../components/header/HeaderFive";
 import PostFormatStandard from "../../components/post/post-format/PostFormatStandard";
-import {getAllPostsWithSlug,getPSinglePost} from "../../../lib/api2";
+import {getUrl,getPSinglePost} from "../../../lib/api2";
 
 
 const PostDetails = ({postContent}) => {
@@ -13,7 +13,7 @@ const PostDetails = ({postContent}) => {
 
     return ( 
         <>
-		<HeadMeta metaTitle={data.node.title}/>
+		<HeadMeta metaTitle={data.node.title} metadescription={data.node.excerpt}/>
         <HeaderFive />
         <Breadcrumb bCat={data.node.categories.edges[0].node.slug} aPage={data.node.title}/>
 		<PostFormatStandard  postData={data} />
@@ -43,7 +43,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-	const allPostsWithSlug = await getAllPostsWithSlug()
+	const allPostsWithSlug = await getUrl()
 	const allData = allPostsWithSlug.edges
 	
 	const paths = allData.map(post => ({

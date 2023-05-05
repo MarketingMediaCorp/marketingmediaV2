@@ -1,6 +1,5 @@
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { getCategory, getUrl } from "../../lib/api2";
-import { format } from 'date-fns';
 import { DOMAIN } from "../../lib/constants";
 
 
@@ -32,7 +31,7 @@ export default function Sitemap(){
     return null;
 }
 
-export const getServerSideProps: GetServerSideProps<{}> = async (ctx: GetServerSidePropsContext) => {
+export const getServerSideProps: GetServerSideProps<Record<string, never>> = async (ctx: GetServerSidePropsContext) => {
 
     ctx.res.setHeader('Content-Type', 'text/xml')
     const xml = await generateSiteMap()

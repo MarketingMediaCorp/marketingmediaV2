@@ -18,7 +18,7 @@ const HomeOne = ({EditorChoice,featuredPosts,GlobalProp, HomePost, Recent}) => {
 
   return ( 
     <>
-    <HeadMeta metaTitle="Marketing Media"/>
+    <HeadMeta metaTitle="Marketing Media" metadescription={null}/>
     <HeaderFive />
     <PostSectionOne EditorChoice={EditorChoice} GlobalPropTech={GlobalPropTech} />
     <PostSectionTwo featured={Featured}/>

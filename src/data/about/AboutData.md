@@ -10,7 +10,5 @@ Our team of expert writers and industry professionals provide in-depth analysis 
 
 Our content covers a range of topics, including case studies showcasing how technology has transformed the real estate industry, in-depth analysis of AI and machine learning algorithms used in real estate, discussion of emerging technologies such as blockchain and their potential impact on the real estate industry, and reviews and comparisons of different real estate software and tools.
 
- We take pride in delivering accurate, informative, and thought-provoking content that helps our readers make informed decisions about the latest developments in the field of proptech. Whether you're a real estate professional looking to optimize your workflow, or a tech enthusiast interested in the latest trends in the industry, Marketing Media is your perfect platform. 
- 
- Thank you for visiting us at Marketing Media, and we look forward to providing you with the latest insights and analysis in proptech.
+ We take pride in delivering accurate, informative, and thought-provoking content that helps our readers make informed decisions about the latest developments in the field of proptech. Whether you're a real estate professional looking to optimize your workflow, or a tech enthusiast interested in the latest trends in the industry, Marketing Media is your perfect platform.
 

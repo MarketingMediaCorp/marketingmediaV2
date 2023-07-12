@@ -20,7 +20,7 @@ const router = useRouter()
       
             <div className="h5 m-b-xs-10 mb-5 mt-5">For Partnerships and Collaborations</div>
             <div>
-            For Partnerships and Collaborations, we are excited to explore potential opportunities and leverage collective strengths. We firmly believe that collaboration fuels innovation and drives meaningful impact. If you&apos;re interested in partnering with us or have any inquiries, please feel free to reach out to us at <a href="info@marketingmedia.solutions" className='anchorlinks'>info@marketingmedia.solutions</a>.<br/>
+            For Partnerships and Collaborations, we are excited to explore potential opportunities and leverage collective strengths. We firmly believe that collaboration fuels innovation and drives meaningful impact. If you&apos;re interested in partnering with us or have any inquiries, please feel free to reach out to us at <a href="matthew@marketingmedia.solutions" className='anchorlinks'>matthew@marketingmedia.solutions</a>.<br/>
            <p className='mt-5'>Whether you have a specific collaboration proposal in mind or simply wish to discuss potential opportunities further, we are eager to hear from you. Kindly provide us with some initial information about your organization and the nature of the partnership you envision. This will enable us to better understand your goals and tailor our response to your specific needs.
 
             We value open communication and welcome your questions, ideas, and suggestions.</p>

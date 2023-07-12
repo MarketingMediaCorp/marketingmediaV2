@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import SectionTitle from "../../elements/SectionTitle";
+import PostLayoutEleven from "../layout/PostLayoutEleven"
 
 
 const PostFormatStandard = ({postData}) => {
@@ -38,8 +39,9 @@ const PostFormatStandard = ({postData}) => {
                 </main>
               </div>
               <div className="col-lg-4">
-                <div className="post-sidebar">
-               
+                
+                <div className="post-sidebar ">
+                
                 </div>
               </div>
             </div>

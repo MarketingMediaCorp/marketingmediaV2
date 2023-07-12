@@ -39,7 +39,7 @@ const PostCategory = ({ postData }) => {
       };
 
     const handlePreviousClick = () => {
-        router.push(`/${category}?before=${postData.pageInfo.startCursor}`);
+        router.push(`/${category}?before=${postData.edges[0].cursor}`);
 
     }
    
@@ -129,18 +129,23 @@ export async function getServerSideProps({res , params, query }) {
 
     const {category} = params;
     const { after, before } = query;
+
+   
+
     let endCursor = '';
     let typeofPost ='nextPosts';
 
-    if(before !== null){
+    if( typeof before !== 'undefined'){
         endCursor = before;
-        typeofPost = 'previousPosts'
+        typeofPost = 'previousPosts' 
     }
     
-    if(after !== null){
+    if(typeof after !== 'undefined'){
         endCursor = after;
         typeofPost = 'nextPosts'
     }
+
+
 
     const postData = await getListCategory(category, endCursor  , typeofPost );
 

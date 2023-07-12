@@ -3,7 +3,7 @@ import HeadMeta from "../../components/elements/HeadMeta";
 import FooterTwo from "../../components/footer/FooterTwo";
 import HeaderFive from "../../components/header/HeaderFive";
 import PostFormatStandard from "../../components/post/post-format/PostFormatStandard";
-import {getUrl,getPSinglePost} from "../../../lib/api2";
+import {getUrl,getPSinglePost,getAllPostsForHome} from "../../../lib/api2";
 import {useRouter} from "next/router"
 import StructuredData from "../../components/post/StructuredData";
 import { DOMAIN } from "../../../lib/constants";
@@ -32,62 +32,63 @@ const PostDetails = ({postContent}) => {
 		"url": DOMAIN,
 		"logo": `${DOMAIN}/favicon/safari-pinned-tab.svg`
 	}
-	const structureBlogData = {
-		"@context": "https://schema.org",
-		"@type": "Article",
-		"mainEntityOfPage": {
-		"@type": "WebPage",
-        "@id": router.asPath
-		},
-		"headline": data.node.title,
-		"description": data.node.excerpt.replace(/(<([^>]+)>)/gi, ""),
-		"image": postImage,
-		"author": {
-          "@type": "Organization",
-          "name": "Marketing Media",
-          "url": DOMAIN
-		},
-		"publisher": {
+	
+
+    const structureBlogData = {
+		  "@context": "https://schema.org",
+		  "@type": "Article",
+		  "mainEntityOfPage": {
+			"@type": "WebPage",
+			"@id": router.asPath
+		  },
+		  "headline": data.node.title,
+		  "description": data.node.excerpt.replace(/(<([^>]+)>)/gi, ""),
+		  "image": postImage,  
+		  "author": {
+			"@type": "Organization",
+			"name": "Marketing Media",
+			"url": DOMAIN
+		  },  
+		  "publisher": {
 			"@type": "Organization",
 			"name": "Marketing Media",
 			"logo": {
-			"@type": "ImageObject",
-			"url": `${DOMAIN}/favicon/safari-pinned-tab.svg`
-        }
-		},
-		"datePublished": formattedDate,
-		"dateModified": modifiedFormattedDate
-    };
-	const BreadCrumbMarkup = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		"itemListElement": [
-		{
-			"@type": "ListItem",
-			"position": 1,
-			"item": {
-			"@id": DOMAIN,
-			"name": "Home"
+			  "@type": "ImageObject",
+			  "url":  `${DOMAIN}/favicon/safari-pinned-tab.svg`
 			}
-		},
-		{
-			"@type": "ListItem",
-			"position": 2,
-			"item": {
-			"@id": `${DOMAIN}/${data.node.categories.edges[0].node.slug}`,
-			"name": data.node.categories.edges[0].node.name
-			}
-		},
-		{
-			"@type": "ListItem",
-			"position": 3,
-			"item": {
-			"@id": router.asPath,
-			"name": data.node.title
-			}
+		  },
+		  "datePublished": formattedDate,
+		  "dateModified": modifiedFormattedDate
 		}
-		]
-	};
+
+		const BreadCrumbMarkup ={
+			"@context": "https://schema.org",
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+			  {
+				"@type": "ListItem",
+				"position": 1,
+				"item": {
+				  "@id": DOMAIN,
+				  "name": "Home"
+				}
+			  },{
+				"@type": "ListItem",
+				"position": 2,
+				"item": {
+				  "@id": `${DOMAIN}/${data.node.categories.edges[0].node.slug}`,
+				  "name": data.node.categories.edges[0].node.name
+				}
+			  },{
+				"@type": "ListItem",
+				"position": 3,
+				"item": {
+				  "@id": router.asPath,
+				  "name": data.node.title
+				}
+			  }
+			 ]
+		  }
 
 		const allStructuredData = [
 			structureBlogData,
@@ -101,11 +102,12 @@ const PostDetails = ({postContent}) => {
 		<StructuredData data={allStructuredData} />
 
         <HeaderFive />
-		<div className="alert alert-primary w-100 h-01 fs-6 lh-sm border-0 text-center pt-2 pb-3" role="alert">
-		We prioritize our readers&apos; satisfaction by providing high-quality content, while their continued support allows us to sustain our operations.		</div>
+		<div class="alert alert-primary w-100 h-01 fs-6 lh-sm border-0 text-center pt-2 pb-3" role="alert">
+		We prioritize our readers' satisfaction by providing high-quality content, while their continued support allows us to sustain our operations.		</div>
         <Breadcrumb bCat={data.node.categories.edges[0].node.slug} aPage={data.node.title}/>
-        <PostFormatStandard  postData={data} />
+		<PostFormatStandard  postData={data} />
         <FooterTwo />
+		 
         </>
      );
 }
@@ -114,9 +116,17 @@ export default PostDetails;
 
 export async function getStaticProps({ params }) {
 
-	const {category,slug} = params;
+	const {category,slug} = params; 
 
 	const single = await getPSinglePost(slug,category)
+
+
+	if(Array.isArray(single.edges) && single.edges.length === 0){
+		return {
+			notFound: true,
+		};
+	}
+
 	
 
 
@@ -124,10 +134,11 @@ export async function getStaticProps({ params }) {
         props: {
             postContent : {
                 single
-            }
+            },
+			
            
         },
-                 revalidate: 60,
+        revalidate: 60,
     }
 }
 
@@ -139,13 +150,11 @@ export async function getStaticPaths() {
         params: {
 			category: post.node.categories.edges[0].node.slug,
             slug: post.node.slug
-			
-			
 		}
 	}))
 	
-    return {
+	return {
 		paths,
-        fallback: "blocking",
+	    fallback: "blocking",
 	}
 }

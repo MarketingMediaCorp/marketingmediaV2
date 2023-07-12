@@ -90,10 +90,10 @@ export async function getPSinglePost(name: string , categoryName: string) {
   )
   return data?.posts
 }
-export async function getListCategory(categoryName: string, endCursor ='', typeofPost='nextPosts') {
+export async function getListCategory(categoryName: string, endCursor ='', typeofPost: string) {
 
   let query;
-  if (typeofPost === 'nextPosts') {
+  if (typeofPost.localeCompare('nextPosts') === 0) {
     query = `
       query CategoryTech($categoryName: String!, $endCursor: String!) {
        posts(after: $endCursor, first: 10, where: { categoryName: $categoryName, orderby: { field: DATE, order: DESC } }) {
@@ -141,7 +141,7 @@ export async function getListCategory(categoryName: string, endCursor ='', typeo
         }
       }
     `;
-  } else if (typeofPost === 'previousPosts') {
+  } else if (typeofPost.localeCompare('previousPosts') === 0) {
     query = `
       query CategoryTech($categoryName: String!, $endCursor: String!) {
         posts(before: $endCursor, last: 10, where: { categoryName: $categoryName, orderby: { field: DATE, order: DESC } }) {
@@ -190,6 +190,7 @@ export async function getListCategory(categoryName: string, endCursor ='', typeo
       }
     `;
   }
+
   const data = await fetchAPI(query,
     {
       variables: {categoryName, endCursor },

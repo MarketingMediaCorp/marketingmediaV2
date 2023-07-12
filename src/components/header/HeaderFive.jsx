@@ -104,40 +104,9 @@ const HeaderFive = () => {
 							<ul className="main-navigation list-inline" ref={menuRef}>
 								{
 									MenuData.map((data, index) => (
-										data.submenu ? 
-										<li className="has-dropdown" key={index}>
-	
-											<Link href={data.path}>
-												<a>{data.label}</a>
-											</Link>
-											<ul className="submenu">
-												{data.submenu.map((data, index) => (
-													data.thirdmenu ? 
-													<li className="has-dropdown" key={index}>
-														<Link href={data.subpath}>
-															<a>{data.sublabel}</a>
-														</Link>
-														<ul className="submenu">
-															{data.thirdmenu.map((data, index) => (
-																<li key={index}>
-																	<Link href={data.tpath}>
-																		<a>{data.tlabel}</a>
-																	</Link>
-																</li>
-															))}
-														</ul>
-													</li> :
-													<li key={index}>
-														<Link href={data.subpath}>
-															<a>{data.sublabel}</a>
-														</Link>
-													</li>
-												))}
-											</ul>
-										</li>:
-										<li key={index}>
-											<Link href={data.path}>
-												<a>{data.label}</a>
+										<li key={index} >
+											<Link href={data.path} >
+												<a >{data.label}</a>
 											</Link>
 										</li>
 									))

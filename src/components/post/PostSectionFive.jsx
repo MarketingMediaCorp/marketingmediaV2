@@ -2,11 +2,12 @@
 import WidgetPost from "../widget/WidgetPost";
 import PostLayoutTwo from "./layout/PostLayoutTwo";
 
-const PostSectionFive = ({ pClass, MoreStories,Recent}) => {
+const PostSectionFive = ({ pClass, MoreStories}) => {
     return ( 
         <div className={`random-posts ${pClass ?? "section-gap"}`}>
           
             <div className="container">
+            <h2 className="axil-title">Home Electronics</h2>
                 <div className="row">
                     <div className="col-lg-8">
                         <div className="axil-content">
@@ -15,11 +16,6 @@ const PostSectionFive = ({ pClass, MoreStories,Recent}) => {
 
                             ))}
 
-                        </div>
-                    </div>
-                    <div className="col-lg-4">
-                        <div className="post-sidebar">
-                            <WidgetPost dataPost={Recent} />
                         </div>
                     </div>
                 </div>

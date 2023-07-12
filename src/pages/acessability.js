@@ -4,11 +4,13 @@ import HeadMeta from '../components/elements/HeadMeta';
 import HeaderFive from '../components/header/HeaderFive';
 import Link from 'next/link';
 import FooterTwo from '../components/footer/FooterTwo';
+import {useRouter} from "next/router"
 
 const TermsoOfUse = ({ aboutData }) => {
+  const router = useRouter()
   return (
     <>
-            <HeadMeta metaTitle="Accessability & CC" />
+            <HeadMeta metaTitle="Accessability & CC" slug={router.asPath} />
             <HeaderFive />
             <div className="bg-grey-light-three mt-5 mb-5">
                 <div className="container">

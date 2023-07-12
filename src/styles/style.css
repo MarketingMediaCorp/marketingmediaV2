@@ -1,62 +1,4 @@
-/*-- ===============================================
 
-Product: 'Papr || HTML Template for News & Magazine'
-Version: 1.0.1
-Author: axilweb
-Date Created: Oct 14, 2022
-
-==================================================== --*/
-/*-- == Table of contents =====================
-
-( Example: Type 'ctrl+f' and then 'variables' to jump to the
- "example" section. Click 'find' if needed.)
-
-//Defaults
--------------------------------
-
-
-//components 
-------------------------------
-* buttons.less';
-* lang-dropdown.less';
-* form.less';
-* social_share.less';
-* header/navbar.less';
-* breadcrumb.less';
-* shape.less';
-* posts.less';
-* content-block.less';
-* newsletter-block.less';
-* banner.less';
-* banner-slider.less';
-* banner-cat-counter.less';
-* post_details.less';
-* header/header_top.less';
-* header/sidenav.less';
-* footer/page_footer.less';
-* plyr.less';
-* isotop.less';
-* team.less';
-* contact.less';
-* error-404.less';
-* under-construction';
-* author-details';
-* subscribe-popup.less';
-
-//widgets
------------------------------
-* widget';
-* category';
-* sidebar-social-share';
-* sidebar-post';
-* instagram-post';
-* add-widget';
-* tag-widget';
-* media_queries';
-
-
-================================================== --*/
-/*--imported fonts--*/
 @font-face {
   font-family: 'Poppins';
   font-style: italic;
@@ -223,7 +165,7 @@ Date Created: Oct 14, 2022
   --primary-font: 'Poppins', sans-serif;
   --secondary-font: 'Roboto', sans-serif;
   --font-awesome: 'Font Awesome 5 Pro';
-  --primary-color: #FF2C54;
+  --primary-color: #00a1ff;
   --secondary-color: #FF9500;
   --action-color: #FECC00;
   --grey-dark-key: #000;
@@ -2929,6 +2871,7 @@ a:hover {
   color: var(--primary-color);
   text-decoration: none;
 }
+
 .container {
   position: relative;
 }
@@ -3736,9 +3679,7 @@ address,
   background-position: center center;
 }
 
-.banner__single-hero {
-  background-image: url(../../public/images/others/banner-gallery-4.jpg);
-}
+
 .under-construction-banner {
   background-size: 40% 100%;
   background-repeat: no-repeat;
@@ -4601,7 +4542,7 @@ input[type="radio"] + label::after {
   left: 0;
   width: 0;
   height: 0.2rem;
-  background-color: currentColor;
+  background-color: white;
   transition: all 0.5s;
 }
 .main-navigation a:hover {
@@ -5269,6 +5210,9 @@ input[type="radio"] + label::after {
 }
 .post-block > a:hover img,
 .post-block figure > a:hover img {
+  transform: scale(1.1);
+}
+.page-link:hover {
   transform: scale(1.1);
 }
 .post-block img {
@@ -6783,16 +6727,7 @@ blockquote p::before,
   margin-left: -0.4rem;
   margin-right: -0.4rem;
 }
-.post-navigation-wrapper .post-navigation {
-  position: relative;
-  background: url(../../public/images/others/post-nav-bg.jpg);
-  background-size: calc(100% - 0.4rem) 100%;
-  background-repeat: no-repeat;
-  background-position: center center;
-  transition: all 0.5s;
-  padding-left: 0.2rem;
-  padding-right: 0.2rem;
-}
+
 @media (max-width: 767px) {
   .post-navigation-wrapper .post-navigation {
     width: 100%;
@@ -8450,13 +8385,6 @@ address .tel i {
     left: 0;
     top: 440px;
   }
-  .axil-banner-cat-counter .axil-content::before {
-    content: "";
-    background: url(../../public/images/others/ie-blur-shadow.png);
-    background-size: 100% 100%;
-    background-position: center center;
-    bottom: -5rem;
-  }
 }
 
 
@@ -8575,6 +8503,10 @@ address .tel i {
 	object-fit: cover;
 	object-position: center;
 }
+#pagnavlink {
+  background-color: var(--primary-color) !important;
+  color: #ffffff !important;
+}
 
 .single-blog-wrapper .masonry-grid {
   margin: 0;
@@ -8632,7 +8564,19 @@ width: 3px;
   background-color: var(--grey-dark-one);
   border-color: var(--grey-dark-one);
 }
+.pagination-lg {
+  --bs-pagination-padding-x: 1.5rem;
+  --bs-pagination-padding-y: 0.75rem;
+  --bs-pagination-font-size: 2.25rem;
+  --bs-pagination-border-radius: 0.5rem;
+}
 
+.h-01{
+height: 1rem !important;
+}
 
+.excer p{
+  font-size: 1.5rem !important;
+}
 /* Splash Page Style  */
 

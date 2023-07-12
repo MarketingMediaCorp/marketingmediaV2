@@ -65,6 +65,21 @@ const FooterTwo = () => {
                 <a>Accessibility &amp; CC</a>
               </Link>
             </li>
+            <li>
+              <Link href="/disclaimer">
+                <a>Disclaimer</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/cookie-policy">
+                <a>Cookie Policy</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/privacy-policy">
+                <a>Privacy Policy</a>
+              </Link>
+            </li>
           
             <li>
               <Link href="/sitemap.xml">

@@ -7,6 +7,7 @@ const SectionTitle = ({title, btnText, pClass,slugText}) => {
             <Link href={`/${slugText || title}`}>
                 <a className="btn-link">{btnText}</a>
             </Link>
+        
         </div>
      );
 }

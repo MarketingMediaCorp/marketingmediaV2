@@ -6,18 +6,17 @@ import Link from 'next/link';
 import FooterTwo from '../components/footer/FooterTwo';
 import {useRouter} from "next/router"
 
-const TermsoOfUse = ({ termsofUse }) => {
+const PrivacyPolicy = ({ privacypolicy }) => {
 
   const router = useRouter()
-
   return (
     <>
-            <HeadMeta metaTitle="Terms of Usage Policy" slug={router.asPath} />
+            <HeadMeta metaTitle="Privacy Policy" slug={router.asPath} />
             <HeaderFive />
             <div className="bg-grey-light-three mt-5 mb-5">
                 <div className="container">
                     <div className="">
-                        <div dangerouslySetInnerHTML={{ __html: termsofUse.content }}></div>
+                        <div dangerouslySetInnerHTML={{ __html: privacypolicy.content }}></div>
 
                             <Link href="/">
                                 <a className="btn btn-primary">BACK TO HOMEPAGE</a>
@@ -33,16 +32,16 @@ const TermsoOfUse = ({ termsofUse }) => {
 };
 
 export async function getStaticProps() {
-  const termsofUse = getFileContentBySlug('TermsOfUse', 'src/data/pageinfo');
-  const content = await markdownToHtml(termsofUse.content || '');
+  const privacypolicy = getFileContentBySlug('Privacypolicy', 'src/data/pageinfo');
+  const content = await markdownToHtml(privacypolicy.content || '');
   
   return {
     props: {
-      termsofUse: {
+        privacypolicy : {
         content
       },
     },
   };
 }
 
-export default TermsoOfUse;
+export default PrivacyPolicy;

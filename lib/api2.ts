@@ -54,10 +54,12 @@ export async function getPSinglePost(name: string , categoryName: string) {
             excerpt
             slug
             date
+            modified
             content
             featuredImage {
               node {
                 sourceUrl
+                altText
               }
             }
             categories {
@@ -88,46 +90,109 @@ export async function getPSinglePost(name: string , categoryName: string) {
   )
   return data?.posts
 }
-export async function getListCategory(categoryName: string) {
-  const data = await fetchAPI(
-    `
-    query CategoryTech($categoryName: String!) {
-      posts(where: {categoryName: $categoryName}) {
-        edges {
-          node {
-            title
-            excerpt
-            slug
-            date
-            featuredImage {
-              node {
-                sourceUrl
+export async function getListCategory(categoryName: string, endCursor ='', typeofPost='nextPosts') {
+
+  let query;
+  if (typeofPost === 'nextPosts') {
+    query = `
+      query CategoryTech($categoryName: String!, $endCursor: String!) {
+       posts(after: $endCursor, first: 10, where: { categoryName: $categoryName, orderby: { field: DATE, order: DESC } }) {
+          edges {
+            node {
+              title
+              excerpt
+              slug
+              date
+              modified
+              content
+              featuredImage {
+                node {
+                  sourceUrl
+                  altText
+                }
               }
-            }
-            categories {
-              edges {
+              categories {
+                edges {
+                  node {
+                    name
+                    slug
+                  }
+                }
+              }
+              author {
                 node {
                   name
-                  slug
+                  firstName
+                  lastName
+                  avatar {
+                    url
+                  }
                 }
               }
             }
-            author {
-              node {
-                name
-                firstName
-                lastName
-                avatar {
-                  url
-                }
-              }
-            }
+            cursor
+          }
+          pageInfo {
+            endCursor
+            hasNextPage
+            hasPreviousPage
+            startCursor
           }
         }
       }
-    }`,
+    `;
+  } else if (typeofPost === 'previousPosts') {
+    query = `
+      query CategoryTech($categoryName: String!, $endCursor: String!) {
+        posts(before: $endCursor, last: 10, where: { categoryName: $categoryName, orderby: { field: DATE, order: DESC } }) {
+          edges {
+            node {
+              title
+              excerpt
+              slug
+              date
+              modified
+              content
+              featuredImage {
+                node {
+                  sourceUrl
+                  altText
+                }
+              }
+              categories {
+                edges {
+                  node {
+                    name
+                    slug
+                  }
+                }
+              }
+              author {
+                node {
+                  name
+                  firstName
+                  lastName
+                  avatar {
+                    url
+                  }
+                }
+              }
+            }
+            cursor
+          }
+          pageInfo {
+            endCursor
+            hasNextPage
+            hasPreviousPage
+            startCursor
+          }
+        }
+      }
+    `;
+  }
+  const data = await fetchAPI(query,
     {
-      variables: {categoryName },
+      variables: {categoryName, endCursor },
     }
   )
   return data?.posts
@@ -178,27 +243,17 @@ export async function getSlugData() {
   const data = await fetchAPI(
     `
     {
-      posts {
-        edges {
-          node {
-         
-            categories {
-              edges {
-                node {
-                  id
-                  name
-                  slug
-                }
-              }
-            }
-            modified
-          }
+      categories {
+        nodes {
+          id
+          name
+          slug
         }
       }
     }
     `
   );
-  return data?.posts;
+  return data?.categories;
 }
 
 
@@ -220,11 +275,11 @@ export async function getCategory() {
   return data?.categories
 }
 
-export async function getAllPostsForHome(preview) {
+export async function getAllPostsForHome(categoryName : string) {
   const data = await fetchAPI(
     `
-    query AllPosts {
-      posts(where: {orderby: {field: DATE, order: ASC}}) {
+    query CategoryTech($categoryName: String!) {
+      posts(last: 10, where: { categoryName: $categoryName, orderby: { field: DATE, order: DESC } }) {
         edges {
           node {
             title
@@ -254,11 +309,6 @@ export async function getAllPostsForHome(preview) {
                 }
               }
             }
-            tags {
-              nodes {
-                name
-              }
-            }
           }
         }
       }
@@ -266,8 +316,7 @@ export async function getAllPostsForHome(preview) {
   `,
     {
       variables: {
-        onlyEnabled: !preview,
-        preview,
+        categoryName
       },
     }
   )

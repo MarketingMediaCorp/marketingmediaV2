@@ -2,11 +2,13 @@ import Link from "next/link";
 import HeadMeta from "../components/elements/HeadMeta";
 import FooterTwo from "../components/footer/FooterTwo";
 import HeaderFive from "../components/header/HeaderFive";
+import {useRouter} from "next/router"
 
 const ErrorPage = () => {
+    const router = useRouter()
     return (
         <>
-            <HeadMeta metaTitle="404 Error Not Found" />
+            <HeadMeta metaTitle="404 Error Not Found" slug={router.asPath} />
             <HeaderFive />
             <div className="error-404-banner bg-grey-light-three">
                 <div className="container">

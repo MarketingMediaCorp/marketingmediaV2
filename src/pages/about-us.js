@@ -6,28 +6,30 @@ import BreadcrumbBanner from "../components/common/BreadcrumbBanner";
 import HeadMeta from "../components/elements/HeadMeta";
 import FooterTwo from "../components/footer/FooterTwo";
 import HeaderFive from "../components/header/HeaderFive";
-
+import TeamOne from "../components/team/team";
+import SectionTitleTwo from "../components/elements/SectionTitleTwo";
+import {useRouter} from "next/router"
 
 const AboutUs = ({ aboutData }) => {
 
+    const AuthorList = [
+        {
+            author_name: "Matthew Manning",
+            author_img: "/images/author/author1.png",
+            author_desg: "Founder and Software Engineer"
 
+        }
+    ]
+
+    const router = useRouter()
     return (
         <>
-            <HeadMeta metaTitle="About Us" />
+            <HeadMeta metaTitle="About Marketing Media" slug={router.asPath}/>
             <HeaderFive />
-            <Breadcrumb aPage="About Us" />
-            <BreadcrumbBanner pageTitle="About Us" />
+            <Breadcrumb aPage="About Marketing Media" />
+            <BreadcrumbBanner pageTitle="About Marketing Media" />
             <div className="axil-about-us section-gap-top p-b-xs-20">
                 <div className="container">
-                    <figure className="m-b-xs-40">
-                        <Image
-                            src={aboutData.data.featuredImg}
-                            height={150}
-                            width={150}
-                            alt="about us"
-                            className="img-fluid mx-auto"
-                        />
-                    </figure>
                     <div className="row">
                         <div className="col-lg-8">
                             <div className="about-us-content">
@@ -39,6 +41,21 @@ const AboutUs = ({ aboutData }) => {
                             <aside className="post-sidebar">
                             </aside>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div className="axil-our-team section-gap section-gap-top__with-text bg-grey-light-three">
+                <div className="container ">
+                    <div className="axil-team-grid-wrapper">
+                        <SectionTitleTwo title="Meet Our Founder"  />
+                        <div className="row d-flex justify-content-center mt-5">
+                            {AuthorList.slice(0,1).map((data) => (
+                                <div className="col-lg-4" key={data.slug}>
+                                   <TeamOne data={data} />
+                                </div>
+                            ))}
+                        </div>
+                       
                     </div>
                 </div>
             </div>

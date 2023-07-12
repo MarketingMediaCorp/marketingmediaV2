@@ -17,37 +17,45 @@ const OffcanvasMenu = ({ofcshow, ofcHandleClose}) => {
                         <div className="col-lg-6">
                         <ul className="main-navigation side-navigation list-inline flex-column">
                             <li>
-                                <Link href="/real-estate-data-analytics">
-                                    <a>Data Analytics</a>
+                                <Link href="/contact-us">
+                                    <a>Contact Us</a>
                                 </Link>
                             </li>
-                            <li>
-                                <Link href="/software-and-tools">
-                                    <a>Software and Tools</a>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/home-electronics">
-                                    <a>Home Electronics</a>
-                                </Link>
-                            </li>
-                          
+                    
                         </ul>
                         {/* End of .main-navigation */}
                         </div>
                         {/* End of  .col-md-6 */}
                         <div className="col-lg-6">
                         <div className="axil-contact-info-inner">
-                            <h5 className="h5 m-b-xs-10">
-                            Contact Information
-                            </h5>
+                            
                             <div className="axil-contact-info">
-                            <address className="address">
-                                <p className="m-b-xs-30  mid grey-dark-three ">support@marketingmedia.solutions</p>
-                                <div className="h5 m-b-xs-5">We&apos;re Available 24/ 7.</div>
-                                <div>
-                                </div>
-                            </address>
+                                   
+                                    <div>
+                                    <Link className="h5 m-b-xs-5 mt-5" href="/privacy-policy">
+                                        <a>Privacy Policy</a>
+                                        
+                                    </Link>
+                                    </div>
+                                    <div>
+                                    <Link className="h5 m-b-xs-5" href="/disclaimer">
+                                        <a>Disclaimer</a>
+                                        
+                                    </Link>
+                                    </div>
+                                    <div>
+                                    <Link className="h5 m-b-xs-5" href="/cookie-policy">
+                                        <a>Cookie Policy</a>
+                                        
+                                    </Link>
+                                    </div>
+                                    <div>
+                                    <Link className="h5 m-b-xs-5" href="/terms-of-use">
+                                        <a>Terms of Use</a>
+                                        
+                                    </Link>
+                                    </div>
+                            
                             {/* End of address */}
                             <div className="contact-social-share m-t-xs-30">
                                 <div className="axil-social-title h5">Follow Us on Twitter</div>

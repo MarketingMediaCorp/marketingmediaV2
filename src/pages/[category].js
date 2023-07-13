@@ -32,15 +32,15 @@ const PostCategory = ({ postData }) => {
 
     const { category } = router.query;
 
-    const [isLoading, setLoading] = useState(false)
+    const [isLoadingNext, setLoadingNext] = useState(false)
+    const [isLoadingPrev, setLoadingPrev] = useState(false)
+
 
 
 
     const handleNextClick = async () => {
-        console.log(isLoading)
 
-        setLoading(true)
-        console.log(isLoading)
+        setLoadingNext(true)
 
         try{
             await router.push(`/${category}?after=${postData.pageInfo.endCursor}`);
@@ -49,12 +49,12 @@ const PostCategory = ({ postData }) => {
             console.log(error)
         }
         finally{
-            setLoading(false)
+            setLoadingNext(false)
         }
       };
 
     const handlePreviousClick = async () => {
-        setLoading(true)
+        setLoadingPrev(true)
 
         try{
             await router.push(`/${category}?before=${postData.edges[0].cursor}`);
@@ -63,7 +63,7 @@ const PostCategory = ({ postData }) => {
             console.log(error)
         }
         finally{
-            setLoading(false)
+            setLoadingPrev(false)
         }
 
     }
@@ -119,9 +119,8 @@ const PostCategory = ({ postData }) => {
                             onClick={handlePreviousClick}
                                 className="page-link display-1 bg-primary text-white p-4 fw-normal "
                             >
-                            {isLoading ? (
+                            {isLoadingPrev ? (
                             <div class="spinner-grow text-light" style={{width: "3rem",  height: "3rem"}} role="status">
-                                <span class="sr-only">Loading...</span>
                             </div>
                           
                             ) : (
@@ -136,9 +135,8 @@ const PostCategory = ({ postData }) => {
                            onClick={handleNextClick}
                             className={`page-link display-1 bg-primary text-white p-4 fw-normal`}
                         >
-                        {isLoading ? (
+                        {isLoadingNext ? (
                             <div class="spinner-grow text-light" style={{width: "3rem",  height: "3rem"}} role="status">
-                                <span class="sr-only">Loading...</span>
                             </div>
                           
                             ) : (

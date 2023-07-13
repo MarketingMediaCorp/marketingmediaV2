@@ -8578,5 +8578,8 @@ height: 1rem !important;
 .excer p{
   font-size: 1.5rem !important;
 }
-/* Splash Page Style  */
+
+.page-item{
+  cursor: pointer !important;
+}
 

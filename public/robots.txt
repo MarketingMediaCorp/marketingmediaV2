@@ -1,0 +1,22 @@
+User-agent: Googlebot
+Disallow: /nogooglebot/
+
+User-agent: *
+Allow: /
+Disallow: /real-estate-data-analytics
+Disallow: /general
+Disallow: /ai-and-machine-learning
+Disallow: /ai-and-machine-learning/top-criteria-to-consider-when-choosing-an-ai-powered-document-automation-tool-for-real-estate
+Disallow: /ai-and-machine-learning/document-automation-tool-features-to-consider	
+Disallow: /ai-and-machine-learning/top-ai-powered-software-to-streamline-real-estate-document-generation
+Disallow: /real-estate-data-analytics/corelogic-vs-attom-choosing-the-best-real-estate-data-provider
+Disallow: /real-estate-data-analytics/ways-real-estate-companies-leverage-predictive-analytics
+Disallow: /real-estate-data-analytics/top-5-commercial-real-estate-data-analytics-companies
+Disallow: /real-estate-data-analytics/top-5-real-estate-data-providers-in-2023
+Disallow: /general/top-skills-you-must-have-to-become-a-real-estate-virtual-assistant-in-2023
+Disallow: /general/zillows-ex-founder-spencer-rascoff-shares-his-vision-for-ai
+Disallow: /general/how-to-launch-your-career-as-a-virtual-real-estate-assistant-in-the-philippines
+Disallow: /general/what-is-mls-multiple-listing-services-explained
+
+
+Sitemap: https://www.marketingmedia.solutions/sitemap.xml

@@ -7,7 +7,7 @@ import {getListCategory} from "../../lib/api2"
 import {useRouter} from  "next/router"
 import { DOMAIN } from "../../lib/constants";
 import StructuredData from "../components/post/StructuredData";
-
+import { useState } from "react";
 
 
 
@@ -32,14 +32,39 @@ const PostCategory = ({ postData }) => {
 
     const { category } = router.query;
 
+    const [isLoading, setLoading] = useState(false)
 
 
-    const handleNextClick = () => {
-        router.push(`/${category}?after=${postData.pageInfo.endCursor}`);
+
+    const handleNextClick = async () => {
+        console.log(isLoading)
+
+        setLoading(true)
+        console.log(isLoading)
+
+        try{
+            await router.push(`/${category}?after=${postData.pageInfo.endCursor}`);
+        }
+        catch(error){
+            console.log(error)
+        }
+        finally{
+            setLoading(false)
+        }
       };
 
-    const handlePreviousClick = () => {
-        router.push(`/${category}?before=${postData.edges[0].cursor}`);
+    const handlePreviousClick = async () => {
+        setLoading(true)
+
+        try{
+            await router.push(`/${category}?before=${postData.edges[0].cursor}`);
+        }
+        catch(error){
+            console.log(error)
+        }
+        finally{
+            setLoading(false)
+        }
 
     }
    
@@ -92,9 +117,16 @@ const PostCategory = ({ postData }) => {
                 {postData.pageInfo.hasPreviousPage &&
                             <a
                             onClick={handlePreviousClick}
-                                className="page-link display-1 bg-primary text-white p-4 fw-normal"
+                                className="page-link display-1 bg-primary text-white p-4 fw-normal "
                             >
-                            Prev
+                            {isLoading ? (
+                            <div class="spinner-grow text-light" style={{width: "3rem",  height: "3rem"}} role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                          
+                            ) : (
+                            'Prev'
+                            )}
                             </a>
                         }
                 </li>
@@ -102,9 +134,16 @@ const PostCategory = ({ postData }) => {
                     {postData.pageInfo.hasNextPage &&
                         <a
                            onClick={handleNextClick}
-                            className="page-link display-1 bg-primary text-white p-4 fw-normal"
+                            className={`page-link display-1 bg-primary text-white p-4 fw-normal`}
                         >
-                        Next
+                        {isLoading ? (
+                            <div class="spinner-grow text-light" style={{width: "3rem",  height: "3rem"}} role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                          
+                            ) : (
+                            'Next'
+                            )}
                         </a>
                     }
                 </li>

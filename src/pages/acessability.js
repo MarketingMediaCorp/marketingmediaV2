@@ -1,12 +1,13 @@
-import { getFileContentBySlug } from '../../lib/api';
-import markdownToHtml from '../../lib/markdownToHtml';
+
 import HeadMeta from '../components/elements/HeadMeta';
 import HeaderFive from '../components/header/HeaderFive';
 import Link from 'next/link';
 import FooterTwo from '../components/footer/FooterTwo';
 import {useRouter} from "next/router"
+import { getAboutPage } from "../../lib/api2"
 
-const TermsoOfUse = ({ aboutData }) => {
+
+const TermsoOfUse = ({ data }) => {
   const router = useRouter()
   return (
     <>
@@ -15,7 +16,7 @@ const TermsoOfUse = ({ aboutData }) => {
             <div className="bg-grey-light-three mt-5 mb-5">
                 <div className="container">
                     <div className="">
-                        <div dangerouslySetInnerHTML={{ __html: aboutData.content }}></div>
+                        <div dangerouslySetInnerHTML={{ __html: data.accessibility.content}}></div>
 
                             <Link href="/">
                                 <a className="btn btn-primary">BACK TO HOMEPAGE</a>
@@ -31,13 +32,12 @@ const TermsoOfUse = ({ aboutData }) => {
 };
 
 export async function getStaticProps() {
-  const aboutData = getFileContentBySlug('Acessability', 'src/data/pageinfo');
-  const content = await markdownToHtml(aboutData.content || '');
+  const accessibility = await getAboutPage("accessibility")
   
   return {
     props: {
-      aboutData: {
-        content
+      data: {
+        accessibility
       },
     },
   };

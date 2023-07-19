@@ -5,6 +5,7 @@ import HeaderFive from '../components/header/HeaderFive';
 import Link from 'next/link';
 import FooterTwo from '../components/footer/FooterTwo';
 import {useRouter} from "next/router"
+import { getAboutPage } from "../../lib/api2"
 
 const Disclaimer = ({ disclaimer }) => {
   const router = useRouter()
@@ -15,7 +16,7 @@ const Disclaimer = ({ disclaimer }) => {
             <div className="bg-grey-light-three mt-5 mb-5">
                 <div className="container">
                     <div className="">
-                        <div dangerouslySetInnerHTML={{ __html: disclaimer.content }}></div>
+                        <div dangerouslySetInnerHTML={{ __html: disclaimer.disclaimer.content }}></div>
 
                             <Link href="/">
                                 <a className="btn btn-primary">BACK TO HOMEPAGE</a>
@@ -31,13 +32,13 @@ const Disclaimer = ({ disclaimer }) => {
 };
 
 export async function getStaticProps() {
-  const disclaimer = getFileContentBySlug('Disclaimer', 'src/data/pageinfo');
-  const content = await markdownToHtml(disclaimer.content || '');
+  const disclaimer = await getAboutPage("disclaimer")
+
   
   return {
     props: {
         disclaimer : {
-        content
+          disclaimer
       },
     },
   };

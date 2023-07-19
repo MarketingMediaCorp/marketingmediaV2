@@ -48,7 +48,7 @@ const PostCategory = ({ postData }) => {
         catch(error){
             console.log(error)
         }
-        finally{
+        finally{ 
             setLoadingNext(false)
         }
       };

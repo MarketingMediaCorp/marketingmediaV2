@@ -1,6 +1,4 @@
-import Image from "next/image";
-import { getFileContentBySlug} from "../../lib/api";
-import markdownToHtml from "../../lib/markdownToHtml";
+
 import Breadcrumb from "../components/common/Breadcrumb";
 import BreadcrumbBanner from "../components/common/BreadcrumbBanner";
 import HeadMeta from "../components/elements/HeadMeta";
@@ -9,6 +7,7 @@ import HeaderFive from "../components/header/HeaderFive";
 import TeamOne from "../components/team/team";
 import SectionTitleTwo from "../components/elements/SectionTitleTwo";
 import {useRouter} from "next/router"
+import { getAboutPage } from "../../lib/api2"
 
 const AboutUs = ({ aboutData }) => {
 
@@ -25,6 +24,7 @@ const AboutUs = ({ aboutData }) => {
     return (
         <>
             <HeadMeta metaTitle="About Marketing Media" slug={router.asPath}/>
+        
             <HeaderFive />
             <Breadcrumb aPage="About Marketing Media" />
             <BreadcrumbBanner pageTitle="About Marketing Media" />
@@ -33,7 +33,7 @@ const AboutUs = ({ aboutData }) => {
                     <div className="row">
                         <div className="col-lg-8">
                             <div className="about-us-content">
-                                <div dangerouslySetInnerHTML={{ __html: aboutData.content }}></div>
+                                <div dangerouslySetInnerHTML={{ __html: aboutData.aboutData.content }}></div>
                             </div>
                         </div>
                         {/* End of .col-lg-8 */}
@@ -72,13 +72,11 @@ export async function getStaticProps() {
 
    
 
-    const aboutData = getFileContentBySlug('AboutData', 'src/data/about')
-    const content = await markdownToHtml(aboutData.content || "")
+    const aboutData = await getAboutPage("about-marketing-media")
     return {
         props: {
             aboutData: {
-                ...aboutData,
-                content
+                aboutData
             }
         }
     }

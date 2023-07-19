@@ -1,10 +1,11 @@
-import { getFileContentBySlug } from '../../lib/api';
-import markdownToHtml from '../../lib/markdownToHtml';
+
 import HeadMeta from '../components/elements/HeadMeta';
 import HeaderFive from '../components/header/HeaderFive';
 import Link from 'next/link';
 import FooterTwo from '../components/footer/FooterTwo';
 import {useRouter} from "next/router"
+import { getAboutPage } from "../../lib/api2"
+
 
 const PrivacyPolicy = ({ privacypolicy }) => {
 
@@ -16,7 +17,7 @@ const PrivacyPolicy = ({ privacypolicy }) => {
             <div className="bg-grey-light-three mt-5 mb-5">
                 <div className="container">
                     <div className="">
-                        <div dangerouslySetInnerHTML={{ __html: privacypolicy.content }}></div>
+                        <div dangerouslySetInnerHTML={{ __html: privacypolicy.privacypolicy.content }}></div>
 
                             <Link href="/">
                                 <a className="btn btn-primary">BACK TO HOMEPAGE</a>
@@ -32,13 +33,13 @@ const PrivacyPolicy = ({ privacypolicy }) => {
 };
 
 export async function getStaticProps() {
-  const privacypolicy = getFileContentBySlug('Privacypolicy', 'src/data/pageinfo');
-  const content = await markdownToHtml(privacypolicy.content || '');
+  const privacypolicy = await getAboutPage("privacy-policy")
+
   
   return {
     props: {
         privacypolicy : {
-        content
+          privacypolicy
       },
     },
   };

@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Link from "next/link";
 import Image from "next/image";
-import MenuData from "../../data/menu/HeaderMenu.json";
 import OffcanvasMenu from './OffcanvasMenu';
 
 const HeaderFive = () => {
@@ -65,11 +64,11 @@ const HeaderFive = () => {
 		}else {
 			setTimeout(() => {
 				HtmlTag.classList.add('main-menu-opened');
-			}, 800)
+			},  800)
 		}
 
 		menuSelect.forEach(element => {
-			element.addEventListener('click', function () {
+			element.addEventListener('click',  () => {
 				if (!element.classList.contains('has-dropdown')) {
 					HtmlTag.classList.remove('main-menu-opened');
 					setMobileToggle(false);
@@ -97,20 +96,37 @@ const HeaderFive = () => {
 									className="col-xs-6"
 									/><span className="fs-3 light display-3" id="brand-name">Marketing Media</span>        
 
-								</a>
+								</a> 
 							</Link>
 						</div>
 						<div className="main-nav-wrapper">
 							<ul className="main-navigation list-inline" ref={menuRef}>
-								{
-									MenuData.map((data, index) => (
-										<li key={index} >
-											<Link href={data.path} >
-												<a >{data.label}</a>
-											</Link>
-										</li>
-									))
-								}
+								<li key="/" >
+									<Link href="/" >
+											<a>Home</a>
+									</Link>
+								</li>
+								<li key="/global-proptech-news">
+									<Link href="/global-proptech-news" >
+											<a>Global PropTech News</a>
+									</Link>
+								</li>
+								
+								<li key="/home-electronics" >
+									<Link href="/home-electronics" >
+											<a>Home Electronics</a>
+									</Link>
+								</li>
+								<li key="/software-and-tools" >
+									<Link href="/software-and-tools" >
+											<a>Software and Tools</a>
+									</Link>
+								</li>
+								<li key="/about-us" >
+									<Link href= "/about-us"  >
+											<a>About</a>
+									</Link>
+								</li>
 							</ul>
 						</div>
 						<div className="navbar-extra-features">

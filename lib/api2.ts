@@ -199,6 +199,21 @@ export async function getListCategory(categoryName: string, endCursor ='', typeo
   return data?.posts
 }
 
+export async function getAboutPage( page : string){
+  const data = await fetchAPI(`query Page ($page : String!) {
+    pageBy(uri: $page) {
+      content
+    }
+  }`,
+  {
+    variables : {
+      page,
+    }
+  }
+ )
+  return data?.pageBy
+}
+
 export async function getPreviewCategorySlug() {
   const data = await fetchAPI(
     `

@@ -1,21 +1,22 @@
-import { getFileContentBySlug } from '../../lib/api';
-import markdownToHtml from '../../lib/markdownToHtml';
+
 import HeadMeta from '../components/elements/HeadMeta';
 import HeaderFive from '../components/header/HeaderFive';
 import Link from 'next/link';
 import FooterTwo from '../components/footer/FooterTwo';
 import {useRouter} from "next/router"
+import { getAboutPage } from "../../lib/api2"
+
 
 const CookiePolicy = ({ cookie }) => {
   const router = useRouter()
   return (
     <>
-            <HeadMeta metaTitle="Disclaimer" slug={router.asPath}/>
+            <HeadMeta metaTitle="Cookie Policy" slug={router.asPath}/>
             <HeaderFive />
             <div className="bg-grey-light-three mt-5 mb-5">
                 <div className="container">
                     <div className="">
-                        <div dangerouslySetInnerHTML={{ __html: cookie.content }}></div>
+                        <div dangerouslySetInnerHTML={{ __html: cookie.cookie.content }}></div>
 
                             <Link href="/">
                                 <a className="btn btn-primary">BACK TO HOMEPAGE</a>
@@ -31,13 +32,13 @@ const CookiePolicy = ({ cookie }) => {
 };
 
 export async function getStaticProps() {
-  const cookie = getFileContentBySlug('CookiePolicy', 'src/data/pageinfo');
-  const content = await markdownToHtml(cookie.content || '');
+  const cookie = await getAboutPage("cookie-policy")
+
   
   return {
     props: {
        cookie : {
-        content
+        cookie
       },
     },
   };

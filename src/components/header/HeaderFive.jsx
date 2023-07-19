@@ -123,7 +123,7 @@ const HeaderFive = () => {
 									</Link>
 								</li>
 								<li key="/about-us" >
-									<Link href= "/about-us"  >
+									<Link href= "/about"  >
 											<a>About</a>
 									</Link>
 								</li>

@@ -111,12 +111,6 @@ const HeaderFive = () => {
 											<a>Global PropTech News</a>
 									</Link>
 								</li>
-								
-								<li key="/home-electronics" >
-									<Link href="/home-electronics" >
-											<a>Home Electronics</a>
-									</Link>
-								</li>
 								<li key="/software-and-tools" >
 									<Link href="/software-and-tools" >
 											<a>Software and Tools</a>
@@ -125,6 +119,16 @@ const HeaderFive = () => {
 								<li key="/about-us" >
 									<Link href= "/about"  >
 											<a>About</a>
+									</Link>
+								</li>
+								<li key="/about-us" >
+									<Link href= "/contact"  >
+											<a>Contact</a>
+									</Link>
+								</li>
+								<li key="/about-us" >
+									<Link href= "/privacy"  >
+											<a>Privacy Policy</a>
 									</Link>
 								</li>
 							</ul>

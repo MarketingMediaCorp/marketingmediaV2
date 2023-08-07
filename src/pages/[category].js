@@ -67,6 +67,7 @@ const PostCategory = ({ postData }) => {
         }
 
     }
+    
    
 
     
@@ -83,6 +84,7 @@ const PostCategory = ({ postData }) => {
                     <div className="col-lg-12">
                         <div className="post-title-wrapper">
                             <h2 className="m-b-xs-0 axil-post-title hover-line">{cateContent.node.categories.edges[0].node.name}</h2>
+                            <p className="mt-5 fs-3 lead">{cateContent.node.categories.edges[0].node.description}</p>
                         </div>
                     </div>
                 </div>

@@ -51,7 +51,7 @@ const FooterTwo = () => {
         <div className="footer-bottom">
           <ul className="footer-bottom-links">
             <li>
-              <Link href="/terms-of-use">
+              <Link href="/terms">
                 <a>Terms of Use</a>
               </Link>
             </li>
@@ -71,12 +71,12 @@ const FooterTwo = () => {
               </Link>
             </li>
             <li>
-              <Link href="/cookie-policy">
+              <Link href="/cookie">
                 <a>Cookie Policy</a>
               </Link>
             </li>
             <li>
-              <Link href="/privacy-policy">
+              <Link href="/privacy">
                 <a>Privacy Policy</a>
               </Link>
             </li>

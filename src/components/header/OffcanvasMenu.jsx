@@ -17,7 +17,7 @@ const OffcanvasMenu = ({ofcshow, ofcHandleClose}) => {
                         <div className="col-lg-6">
                         <ul className="main-navigation side-navigation list-inline flex-column">
                             <li>
-                                <Link href="/contact-us">
+                                <Link href="/contact">
                                     <a>Contact Us</a>
                                 </Link>
                             </li>
@@ -32,7 +32,7 @@ const OffcanvasMenu = ({ofcshow, ofcHandleClose}) => {
                             <div className="axil-contact-info">
                                    
                                     <div>
-                                    <Link className="h5 m-b-xs-5 mt-5" href="/privacy-policy">
+                                    <Link className="h5 m-b-xs-5 mt-5" href="/privacy">
                                         <a>Privacy Policy</a>
                                         
                                     </Link>
@@ -44,13 +44,13 @@ const OffcanvasMenu = ({ofcshow, ofcHandleClose}) => {
                                     </Link>
                                     </div>
                                     <div>
-                                    <Link className="h5 m-b-xs-5" href="/cookie-policy">
+                                    <Link className="h5 m-b-xs-5" href="/cookie">
                                         <a>Cookie Policy</a>
                                         
                                     </Link>
                                     </div>
                                     <div>
-                                    <Link className="h5 m-b-xs-5" href="/terms-of-use">
+                                    <Link className="h5 m-b-xs-5" href="/terms">
                                         <a>Terms of Use</a>
                                         
                                     </Link>

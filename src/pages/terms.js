@@ -7,7 +7,7 @@ import {useRouter} from "next/router"
 import { getAboutPage } from "../../lib/api2"
 
 
-const TermsoOfUse = ({ termsofuse }) => {
+const TermsoOfUse = ({ termsofUse }) => {
 
   const router = useRouter()
 
@@ -18,7 +18,7 @@ const TermsoOfUse = ({ termsofuse }) => {
             <div className="bg-grey-light-three mt-5 mb-5">
                 <div className="container">
                     <div className="">
-                        <div dangerouslySetInnerHTML={{ __html: termsofuse.termsofUse.content }}></div>
+                        <div dangerouslySetInnerHTML={{ __html: termsofUse.content }}></div>
 
                             <Link href="/">
                                 <a className="btn btn-primary">BACK TO HOMEPAGE</a>
@@ -34,13 +34,13 @@ const TermsoOfUse = ({ termsofuse }) => {
 };
 
 export async function getStaticProps() {
-  const termsofuse = await getAboutPage("terms-of-use")
+  const termsofuse = await getAboutPage("terms")
 
   
   return {
     props: {
       termsofUse: {
-        termsofuse
+        content : termsofuse.content
       },
     },
   };

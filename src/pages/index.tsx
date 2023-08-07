@@ -37,7 +37,6 @@ const HomeOne = ({EditorChoice,featuredPosts,GlobalProp, HomePost, Recent}) => {
     <HeaderFive />
     <PostSectionOne EditorChoice={EditorChoice} GlobalPropTech={GlobalPropTech} />
     <PostSectionTwo featured={Featured}/>
-    <PostSectionFive  pClass={null} MoreStories={MoreStories}/>
     <PostSectionRecent featured={RecentStories}/>
     <FooterTwo />
     </>

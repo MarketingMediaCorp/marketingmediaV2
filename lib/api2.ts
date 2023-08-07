@@ -116,6 +116,7 @@ export async function getListCategory(categoryName: string, endCursor ='', typeo
                   node {
                     name
                     slug
+                    description
                   }
                 }
               }
@@ -164,6 +165,7 @@ export async function getListCategory(categoryName: string, endCursor ='', typeo
                   node {
                     name
                     slug
+                    description
                   }
                 }
               }
@@ -322,6 +324,7 @@ export async function getAllPostsForHome(categoryName : string) {
                 node {
                   name
                   slug
+                  description
                 }
               }
             }

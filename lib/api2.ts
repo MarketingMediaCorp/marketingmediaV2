@@ -271,7 +271,7 @@ export async function getSlugData() {
     }
     `
   );
-  return data?.categories;
+  return data?.categories; 
 }
 
 

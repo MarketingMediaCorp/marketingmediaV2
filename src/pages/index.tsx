@@ -12,10 +12,14 @@ import { DOMAIN } from "../../lib/constants";
 import StructuredData from "../components/post/StructuredData";
 
 
-const HomeOne = ({EditorChoice,featuredPosts,GlobalProp, HomePost, Recent}) => {
+const HomeOne = ({EditorChoice,featuredPosts,GlobalProp, HomeElectronics, Recent}) => {
  const Featured = featuredPosts.edges
  const GlobalPropTech = GlobalProp.edges
- const MoreStories = HomePost.edges
+
+
+ const MoreStories = HomeElectronics.edges
+
+
  const RecentStories = Recent.edges
 
  const structureCoData = 
@@ -38,6 +42,7 @@ const HomeOne = ({EditorChoice,featuredPosts,GlobalProp, HomePost, Recent}) => {
     <PostSectionOne EditorChoice={EditorChoice} GlobalPropTech={GlobalPropTech} />
     <PostSectionTwo featured={Featured}/>
     <PostSectionRecent featured={RecentStories}/>
+    <PostSectionFive  pClass={null} MoreStories={MoreStories} />
     <FooterTwo />
     </>
    );
@@ -48,7 +53,7 @@ export default HomeOne;
 
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const HomePost = await getAllPostsForHome("home-electronics")
+  const HomeElectronics = await getAllPostsForHome("home-electronics")
   const featuredPosts = await getFeaturedPostsForHome(preview)
   const EditorChoice = await getEditorChoice(preview)
   const GlobalProp = await getGlobalNews(preview)
@@ -56,7 +61,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
 
 
   return {
-    props: { HomePost, preview,featuredPosts,EditorChoice, GlobalProp,Recent },
+    props: { HomeElectronics, preview,featuredPosts,EditorChoice, GlobalProp,Recent },
     revalidate: 10,
   }
 }

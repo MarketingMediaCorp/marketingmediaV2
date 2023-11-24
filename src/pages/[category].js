@@ -7,7 +7,7 @@ import {getListCategory} from "../../lib/api2"
 import {useRouter} from  "next/router"
 import { DOMAIN } from "../../lib/constants";
 import StructuredData from "../components/post/StructuredData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 
@@ -15,6 +15,10 @@ import { useState } from "react";
 
 const PostCategory = ({ postData }) => {
     const cateContent = postData.edges[0];
+
+    useEffect(() => {
+        console.log(postData)
+    }, [postData])
 
 
 

@@ -116,6 +116,11 @@ const HeaderFive = () => {
 											<a>Software and Tools</a>
 									</Link>
 								</li>
+								<li key="/home-electronics">
+									<Link href="/home-electronics" >
+											<a>Home Electronics</a>
+									</Link>
+								</li>
 								<li key="/about-us" >
 									<Link href= "/about"  >
 											<a>About</a>
